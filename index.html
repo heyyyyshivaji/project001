@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTES & PDF</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
+
+    <meta property="og:title" content="photo-pdf-organizer-flow" />
+    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Organizer</h3>
+                <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">☰</button>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="#dashboard" class="active"><span class="icon">📊</span> Dashboard</a></li>
+                    <li><a href="#files"><span class="icon">📄</span> Files</a></li>
+                    <li><a href="#images"><span class="icon">🖼️</span> Images</a></li>
+                    <li><a href="#pdfs"><span class="icon">📑</span> PDFs</a></li>
+                    <li><a href="#todo"><span class="icon">📝</span> Todo List</a></li>
+                    <li><a href="#pomodoro"><span class="icon">⏱️</span> Pomodoro</a></li>
+                    <li><a href="#settings"><span class="icon">⚙️</span> Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="top-bar">
+                <button class="sidebar-toggle" id="mobile-sidebar-toggle" aria-label="Toggle Sidebar">☰</button>
+                <h1>Resources</h1>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard-section">
+                <div class="section-header">
+                    <h2>Welcome to your Organizer</h2>
+                    <p>Manage all your files and tasks in one place.</p>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="card" data-target="images-section">
+                        <div class="card-header">
+                            <div class="card-icon blue">🖼️</div>
+                            <h3>Image Gallery</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Organize and view your images</p>
+                        </div>
+                    </div>
+
+                    <div class="card" data-target="pdfs-section">
+                        <div class="card-header">
+                            <div class="card-icon red">📑</div>
+                            <h3>PDF Library</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Store and manage your PDF documents</p>
+                        </div>
+                    </div>
+
+                    <div class="card" data-target="todo-section">
+                        <div class="card-header">
+                            <div class="card-icon amber">📝</div>
+                            <h3>Todo List</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Manage your tasks and stay organized</p>
+                        </div>
+                    </div>
+
+                    <div class="card" data-target="pomodoro-section">
+                        <div class="card-header">
+                            <div class="card-icon green">⏱️</div>
+                            <h3>Pomodoro Timer</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>Focus and break timer for productivity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <h3>Recent Files</h3>
+                        </div>
+                        <div class="card-content empty-state">
+                            <p>No recent files</p>
+                        </div>
+                    </div>
+
+                    <div class="card full-width">
+                        <div class="card-header">
+                            <h3>Upcoming Tasks</h3>
+                        </div>
+                        <div class="card-content empty-state">
+                            <p>No upcoming tasks</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Files Section -->
+            <section class="content-section" id="files-section">
+                <div class="section-header">
+                    <h2>Files</h2>
+                    <p>Upload and organize your files</p>
+                </div>
+                <div class="files-container">
+                    <div class="upload-area">
+                        <div class="upload-card">
+                            <h3>Upload Files</h3>
+                            <div class="upload-zone" id="file-upload-zone">
+                                <div class="upload-icon">📤</div>
+                                <p>Drag & drop files here or click to browse</p>
+                                <input type="file" id="file-upload" class="hidden-upload" multiple>
+                            </div>
+                            <button class="btn secondary" id="browse-files-btn">Browse Files</button>
+                        </div>
+                    </div>
+                    <div class="files-list">
+                        <div class="search-bar">
+                            <input type="search" placeholder="Search files..." id="files-search">
+                        </div>
+                        <div class="files-grid" id="files-container">
+                            <!-- Files will be added here dynamically -->
+                            <div class="empty-state">
+                                <p>No files found. Upload some files to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Images Section -->
+            <section class="content-section" id="images-section">
+                <div class="section-header">
+                    <h2>Images</h2>
+                    <p>Upload and organize your images</p>
+                </div>
+                <div class="files-container">
+                    <div class="upload-area">
+                        <div class="upload-card">
+                            <h3>Upload Images</h3>
+                            <div class="upload-zone" id="image-upload-zone">
+                                <div class="upload-icon">📤</div>
+                                <p>Drag & drop images here or click to browse</p>
+                                <input type="file" id="image-upload" class="hidden-upload" accept="image/*" multiple>
+                            </div>
+                            <button class="btn secondary" id="browse-images-btn">Browse Images</button>
+                        </div>
+                    </div>
+                    <div class="files-list">
+                        <div class="search-bar">
+                            <input type="search" placeholder="Search images..." id="images-search">
+                        </div>
+                        <div class="files-grid" id="images-container">
+                            <!-- Images will be added here dynamically -->
+                            <div class="empty-state">
+                                <p>No images found. Upload some images to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PDFs Section -->
+            <section class="content-section" id="pdfs-section">
+                <div class="section-header">
+                    <h2>PDF Documents</h2>
+                    <p>Upload and organize your PDF files</p>
+                </div>
+                <div class="files-container">
+                    <div class="upload-area">
+                        <div class="upload-card">
+                            <h3>Upload PDFs</h3>
+                            <div class="upload-zone" id="pdf-upload-zone">
+                                <div class="upload-icon">📤</div>
+                                <p>Drag & drop PDF files here or click to browse</p>
+                                <input type="file" id="pdf-upload" class="hidden-upload" accept="application/pdf" multiple>
+                            </div>
+                            <button class="btn secondary" id="browse-pdfs-btn">Browse PDFs</button>
+                        </div>
+                    </div>
+                    <div class="files-list">
+                        <div class="search-bar">
+                            <input type="search" placeholder="Search PDFs..." id="pdfs-search">
+                        </div>
+                        <div class="files-grid" id="pdfs-container">
+                            <!-- PDFs will be added here dynamically -->
+                            <div class="empty-state">
+                                <p>No PDFs found. Upload some PDF files to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Todo List Section -->
+            <section class="content-section" id="todo-section">
+                <div class="section-header">
+                    <h2>Todo List</h2>
+                    <p>Manage your tasks and stay organized</p>
+                </div>
+                <div class="todo-container">
+                    <div class="todo-form">
+                        <input type="text" id="new-todo" placeholder="Add a new task...">
+                        <button class="btn primary" id="add-todo-btn">Add Task</button>
+                    </div>
+                    <div class="todo-list" id="todo-list">
+                        <!-- Todo items will be added here dynamically -->
+                        <div class="empty-state">
+                            <p>No tasks yet. Add some tasks to get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pomodoro Section -->
+            <section class="content-section" id="pomodoro-section">
+                <div class="section-header">
+                    <h2>Pomodoro Timer</h2>
+                    <p>Stay focused with the Pomodoro technique</p>
+                </div>
+                <div class="pomodoro-container">
+                    <div class="pomodoro-card">
+                        <div class="timer-display">
+                            <h3 class="timer-state">Work Time</h3>
+                            <div class="timer" id="timer">25:00</div>
+                        </div>
+                        <div class="timer-controls">
+                            <button class="btn primary" id="timer-toggle">Start</button>
+                            <button class="btn secondary" id="timer-skip">Skip</button>
+                        </div>
+                        <div class="timer-settings">
+                            <div class="setting">
+                                <label for="work-duration">Work Duration: <span id="work-value">25</span> min</label>
+                                <input type="range" id="work-duration" min="5" max="60" step="5" value="25">
+                            </div>
+                            <div class="setting">
+                                <label for="short-break-duration">Short Break: <span id="short-break-value">5</span> min</label>
+                                <input type="range" id="short-break-duration" min="1" max="15" step="1" value="5">
+                            </div>
+                            <div class="setting">
+                                <label for="long-break-duration">Long Break: <span id="long-break-value">15</span> min</label>
+                                <input type="range" id="long-break-duration" min="5" max="30" step="5" value="15">
+                            </div>
+                        </div>
+                        <div class="cycles">
+                            <p>Completed cycles: <span id="cycle-count">0</span></p>
+                        </div>
+                        
+                        <!-- Music Player Section -->
+                        <div class="pomodoro-music">
+                            <h3>Background Music</h3>
+                            <div class="music-controls">
+                                <audio id="pomodoro-audio" controls>
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                            <div class="music-playlist">
+                                <div class="playlist-header">
+                                    <h4>Playlist</h4>
+                                    <button class="btn secondary" id="add-music-btn">Add Music</button>
+                                </div>
+                                <div class="playlist" id="pomodoro-playlist">
+                                    <!-- Default focus music -->
+                                    <div class="playlist-item" data-url="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0c6ff1bab.mp3?filename=relaxing-mountains-rivers-streams-running-water-18178.mp3">
+                                        <span class="song-title">Relaxing Nature Sounds</span>
+                                        <button class="remove-song">×</button>
+                                    </div>
+                                    <div class="playlist-item" data-url="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8f3d3a2.mp3?filename=peaceful-piano-112199.mp3">
+                                        <span class="song-title">Peaceful Piano</span>
+                                        <button class="remove-song">×</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="content-section" id="settings-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <p>Customize your application settings</p>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Appearance</h3>
+                        <div class="setting">
+                            <label for="theme-select">Theme</label>
+                            <select id="theme-select">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="system">System Default</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting">
+                            <label class="switch-label">
+                                <input type="checkbox" id="notification-toggle" checked>
+                                <span class="switch"></span>
+                                Enable Notifications
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
